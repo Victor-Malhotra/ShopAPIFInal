@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
-const TaskSchema = new mongoose.Schema({
+const ItemSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, "Must provide a task name"],
+    required: [true, "Must provide a item name"],
     trim: true,
     maxlength: [120, "Task can not be more than 120 characters"],
   },
@@ -12,7 +12,11 @@ const TaskSchema = new mongoose.Schema({
     trim: true,
     default: 1
   },
-  completed: { type: Boolean, default: false },
+  cost: {
+    type: String,
+    required: [true,"Item must have a price"],
+    trim: true
+  },
 });
 
-module.exports = mongoose.model("Task", TaskSchema);
+module.exports = mongoose.model("Item", ItemSchema);

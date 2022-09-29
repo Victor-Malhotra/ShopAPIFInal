@@ -4,13 +4,17 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^5.2.1",
     "bootstrap-icons": "^1.9.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "mongoose": "^5.11.10",
+    "nodemon": "^2.0.20",
     "sass": "^1.55.0"
   }
 }

@@ -1,9 +1,9 @@
-const Task = require("../models/Item");
+const Item = require("../models/Item");
 
 const getAllItems = async (req, res) => {
   try {
-    const tasks = await Task.find({});
-    res.status(200).json({ tasks });
+    const items = await Item.find({});
+    res.status(200).json({ items });
   } catch (error) {
     res.status(500).json(error.errors.name.properties.message);
   }
@@ -11,8 +11,8 @@ const getAllItems = async (req, res) => {
 
 const createItem = async (req, res) => {
   try {
-    const task = await Task.create(req.body);
-    res.status(201).json({ task });
+    const item = await Item.create(req.body);
+    res.status(201).json({ item });
   } catch (error) {
     res.status(500).json(error.errors.name.properties.message);
   }
@@ -20,28 +20,28 @@ const createItem = async (req, res) => {
 
 const getItem = async (req, res) => {
   try {
-    const { id: taskID } = req.params;
-    const task=await Task.findOne({_id: taskID});
-    if(!task) {
-      return res.status(404).json({msg: `No task wiht id : ${taskID}`})
+    const { id: itemID } = req.params;
+    const item = await Item.findOne({ _id: taskID });
+    if (!task) {
+      return res.status(404).json({ msg: `No task wiht id : ${itemID}` });
     }
-    res.status(200).json({ task });
+    res.status(200).json({ item });
   } catch (error) {
     res.status(500).json(error.errors.name.properties.message);
   }
 };
 
 const UpdateItem = async (req, res) => {
-    try {
-    const { id: taskID } = req.params;
-      const task=await Task.findOneAndUpdate({_id: taskID},req.body,{
-        new: true,
-        runValidators:true,
+  try {
+    const { id: itemID } = req.params;
+    const item = await Task.findOneAndUpdate({ _id: itemID }, req.body, {
+      new: true,
+      runValidators: true,
     });
-    if(!task) {
-      return res.status(404).json({msg: `No task wiht id : ${taskID}`})
+    if (!item) {
+      return res.status(404).json({ msg: `No task wiht id : ${itemID}` });
     }
-    res.status(200).json({ task });
+    res.status(200).json({ item });
   } catch (error) {
     res.status(500).json(error.errors.name.properties.message);
   }
@@ -49,12 +49,12 @@ const UpdateItem = async (req, res) => {
 
 const deleteItem = async (req, res) => {
   try {
-    const { id: taskID } = req.params;
-    const task=await Task.findOneAndDelete({_id: taskID});
-    if(!task) {
-      return res.status(404).json({msg: `No task wiht id : ${taskID}`})
+    const { id: itemID } = req.params;
+    const task = await Task.findOneAndDelete({ _id: itemID });
+    if (!item) {
+      return res.status(404).json({ msg: `No task wiht id : ${itemID}` });
     }
-    res.status(200).json({ task });
+    res.status(200).json({ item });
   } catch (error) {
     res.status(500).json(error.errors.name.properties.message);
   }

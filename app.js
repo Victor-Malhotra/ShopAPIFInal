@@ -1,20 +1,21 @@
 const express = require("express");
 const app = express();
 const PORT = 5000;
-const tasks = require("./routes/tasks");
+const items = require("./routes/item");
 const connectDB = require("./db/connect");
 require("dotenv").config();
 
 //middleware
 app.use(express.json());
+app.use(express.urlencoded());
 app.use(express.static("./public"));
 
 //routes
 app.get("/", (req, res) => {
-  res.send("Task Manager");
+  res.send("The Shop");
 });
 
-app.use("/api/v1/item", tasks);
+app.use("/api/v1/items", items);
 
 const start = async () => {
   try {
