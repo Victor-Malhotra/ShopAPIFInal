@@ -21,9 +21,9 @@ const createItem = async (req, res) => {
 const getItem = async (req, res) => {
   try {
     const { id: itemID } = req.params;
-    const item = await Item.findOne({ _id: taskID });
-    if (!task) {
-      return res.status(404).json({ msg: `No task wiht id : ${itemID}` });
+    const item = await Item.findOne({ _id: ItemID });
+    if (!Item) {
+      return res.status(404).json({ msg: `No Item wiht id : ${itemID}` });
     }
     res.status(200).json({ item });
   } catch (error) {
@@ -34,12 +34,12 @@ const getItem = async (req, res) => {
 const UpdateItem = async (req, res) => {
   try {
     const { id: itemID } = req.params;
-    const item = await Task.findOneAndUpdate({ _id: itemID }, req.body, {
+    const item = await Item.findOneAndUpdate({ _id: itemID }, req.body, {
       new: true,
       runValidators: true,
     });
     if (!item) {
-      return res.status(404).json({ msg: `No task wiht id : ${itemID}` });
+      return res.status(404).json({ msg: `No Item wiht id : ${itemID}` });
     }
     res.status(200).json({ item });
   } catch (error) {
@@ -50,9 +50,9 @@ const UpdateItem = async (req, res) => {
 const deleteItem = async (req, res) => {
   try {
     const { id: itemID } = req.params;
-    const task = await Task.findOneAndDelete({ _id: itemID });
+    const Item = await Item.findOneAndDelete({ _id: itemID });
     if (!item) {
-      return res.status(404).json({ msg: `No task wiht id : ${itemID}` });
+      return res.status(404).json({ msg: `No Item wiht id : ${itemID}` });
     }
     res.status(200).json({ item });
   } catch (error) {
